@@ -317,10 +317,13 @@ If port 9000 is already in use:
 
 If the health check fails:
 
-1. **Check if wget is available** (it should be in the Alpine image)
-2. **Test the endpoint manually:**
+1. **Test the endpoint manually using curl (available in Alpine):**
    ```bash
-   docker exec github-readme-stats wget -O- http://localhost:9000/api?username=anuraghazra
+   docker exec github-readme-stats curl http://localhost:9000/api?username=anuraghazra
+   ```
+2. **Or use Node.js to test:**
+   ```bash
+   docker exec github-readme-stats node -e "require('http').get('http://localhost:9000/api?username=anuraghazra', (r) => console.log('Status:', r.statusCode))"
    ```
 3. **Verify your PAT_1 is valid**
 

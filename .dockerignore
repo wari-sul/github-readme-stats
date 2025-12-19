@@ -34,6 +34,7 @@ vercel_token
 # Documentation
 *.md
 !README.md
+!DEPLOY.md
 
 # Development tools
 .husky
