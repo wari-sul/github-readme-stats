@@ -2,6 +2,9 @@
 
 This guide explains how to deploy GitHub Readme Stats using Docker and Docker Compose, including deployment on Coolify and other Docker-based platforms.
 
+> **🚀 Quick Start for Coolify Users:**  
+> Jump directly to the [Deploy on Coolify](#deploy-on-coolify) section for step-by-step Coolify deployment instructions.
+
 ## Table of Contents
 
 - [Prerequisites](#prerequisites)
