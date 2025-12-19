@@ -26,6 +26,8 @@ services:
     env_file:
       - .env
     healthcheck:
+      # Uses Node.js built-in http module to test the API endpoint
+      # Tests with 'anuraghazra' (repo author) as a reliable test username
       test: ["CMD", "node", "-e", "require('http').get('http://localhost:9000/api?username=anuraghazra', (r) => process.exit(r.statusCode === 200 ? 0 : 1))"]
       interval: 30s
       timeout: 10s

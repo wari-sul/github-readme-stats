@@ -65,7 +65,7 @@ fi
 # Validate Dockerfile syntax
 echo ""
 echo "Validating Dockerfile..."
-if docker build -t github-readme-stats-test -f Dockerfile . > /dev/null 2>&1 || [ $? -eq 0 ]; then
+if docker build -t github-readme-stats-test -f Dockerfile . > /dev/null 2>&1; then
     echo "✅ Dockerfile appears valid"
 else
     echo "⚠️  Dockerfile validation inconclusive (this is normal)"
