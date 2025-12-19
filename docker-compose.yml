@@ -1,0 +1,41 @@
+# Docker Compose configuration for GitHub Readme Stats
+# Suitable for Coolify and other Docker-based platforms
+
+services:
+  github-readme-stats:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: github-readme-stats
+    restart: unless-stopped
+    ports:
+      - "${PORT:-9000}:9000"
+    environment:
+      # GitHub Personal Access Token (REQUIRED)
+      # Create a PAT at: https://github.com/settings/tokens
+      # Required scopes: repo, read:user
+      - PAT_1=${PAT_1}
+      
+      # Optional environment variables
+      - PORT=${PORT:-9000}
+      - CACHE_SECONDS=${CACHE_SECONDS:-86400}
+      - WHITELIST=${WHITELIST:-}
+      - GIST_WHITELIST=${GIST_WHITELIST:-}
+      - EXCLUDE_REPO=${EXCLUDE_REPO:-}
+      - FETCH_MULTI_PAGE_STARS=${FETCH_MULTI_PAGE_STARS:-false}
+    env_file:
+      - .env
+    healthcheck:
+      # Uses Node.js built-in http module to test the API endpoint
+      # Tests with 'anuraghazra' (repo author) as a reliable test username
+      test: ["CMD", "node", "-e", "require('http').get('http://localhost:9000/api?username=anuraghazra', (r) => process.exit(r.statusCode === 200 ? 0 : 1))"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    networks:
+      - github-stats-network
+
+networks:
+  github-stats-network:
+    driver: bridge
