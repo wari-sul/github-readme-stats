@@ -798,6 +798,12 @@ By default, GitHub does not lay out the cards side by side. To do that, you can 
 
 # Deploy on your own
 
+You can deploy GitHub Readme Stats on various platforms:
+
+- **[Docker/Coolify](#using-docker-and-docker-compose-coolify-etc)** - Recommended for self-hosted deployments
+- **[Vercel](#on-vercel)** - Serverless deployment (official hosting)
+- **[Other platforms](#using-nodejs-directly)** - Direct Node.js deployment
+
 ## First step: get your Personal Access Token (PAT)
 
 For deploying your own instance of GitHub Readme Stats, you will need to create a GitHub Personal Access Token (PAT). Below are the steps to create one and the scopes you need to select for both classic and fine-grained tokens.
@@ -870,6 +876,30 @@ Since the GitHub API only allows 5k requests per hour, my `https://github-readme
 
 > [!WARNING]
 > This way of using GRS is not officially supported and was added to cater to some particular use cases where Vercel could not be used (e.g. [#2341](https://github.com/anuraghazra/github-readme-stats/discussions/2341)). The support for this method, therefore, is limited.
+
+### Using Docker and Docker Compose (Coolify, etc.)
+
+For Docker-based platforms like Coolify, we provide ready-to-use Docker and Docker Compose configurations:
+
+📘 **See [DEPLOY.md](./DEPLOY.md) for comprehensive Docker deployment guide**, including:
+- Docker Compose setup
+- Coolify deployment instructions
+- Environment variable configuration
+- Troubleshooting tips
+
+**Quick start:**
+```bash
+# 1. Create environment file
+cp .env.example .env
+
+# 2. Add your GitHub PAT to .env
+# PAT_1=ghp_your_personal_access_token_here
+
+# 3. Start with Docker Compose
+docker-compose up -d
+```
+
+### Using Node.js directly
 
 <details>
 <summary><b>:hammer_and_wrench: Step-by-step guide for deploying on other platforms</b></summary>

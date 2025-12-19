@@ -1,0 +1,26 @@
+# Coolify configuration file
+# This file helps Coolify understand how to deploy the application
+
+# Build configuration
+build:
+  dockerfile: Dockerfile
+  
+# Health check endpoint
+healthcheck:
+  path: /api?username=anuraghazra
+  interval: 30s
+  timeout: 10s
+  retries: 3
+  
+# Port mapping
+ports:
+  - 9000:9000
+
+# Environment variables (configure these in Coolify UI)
+# PAT_1: GitHub Personal Access Token (required)
+# PORT: Server port (default: 9000)
+# CACHE_SECONDS: Cache duration (default: 86400)
+# WHITELIST: Allowed usernames (optional)
+# GIST_WHITELIST: Allowed gist IDs (optional)
+# EXCLUDE_REPO: Excluded repositories (optional)
+# FETCH_MULTI_PAGE_STARS: Fetch all stars (default: false)

@@ -1,8 +1,6 @@
 # Docker Compose configuration for GitHub Readme Stats
 # Suitable for Coolify and other Docker-based platforms
 
-version: '3.8'
-
 services:
   github-readme-stats:
     build:
